@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Music Player</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      background-image: url('./assests/jefferson-santos-fCEJGBzAkrU-unsplash.jpg');
+      background-repeat: no-repeat;
+      background-size:cover;
+    }
+
+    .player-container {
+      width: 300px;
+      margin: 50px auto;
+    }
+
+    audio {
+      width: 100%;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 8px 16px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>Music Player</h1>
+
+<div class="player-container">
+  <h2>Song 1: Jimikki Ponnu</h2>
+  <audio class="audio" controls>
+    <source src="./assests/Jimikki Ponnu.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+  <button class="playPauseButton">Play</button>
+</div>
+
+<div class="player-container">
+  <h2>Song 2: Kanne Kanne</h2>
+  <audio class="audio" controls>
+    <source src="./assests/Kanne Kanne.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+  <button class="playPauseButton">Play</button>
+</div>
+
+<div class="player-container">
+  <h2>Song 3: Megam Karukkaiyile</h2>
+  <audio class="audio" controls>
+    <source src="./assests/Megam-Karukkaiyile-MassTamilan.io.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+  <button class="playPauseButton">Play</button>
+</div>
+
+<div class="player-container">
+  <h2>Song 4: Nethu Oruthara Oruthara</h2>
+  <audio class="audio" controls>
+    <source src="./assests/Nethu-Oruthara-Oruthara-MassTamilan.io.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+  <button class="playPauseButton">Play</button>
+</div>
+
+<div class="player-container">
+  <h2>Song 5: Sorgame Endralum</h2>
+  <audio class="audio" controls>
+    <source src="./assests/Sorgame-Endralum-Athu-MassTamilan.io.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+  <button class="playPauseButton">Play</button>
+</div>
+
+<script>
+  const allAudioElements = document.querySelectorAll('.audio');
+  const allPlayPauseButtons = document.querySelectorAll('.playPauseButton');
+
+  allPlayPauseButtons.forEach((button, index) => {
+    button.addEventListener('click', () => {
+      togglePlayPause(index);
+    });
+  });
+
+  function togglePlayPause(index) {
+    allAudioElements.forEach((audio, audioIndex) => {
+      if (audioIndex === index) {
+        if (audio.paused) {
+          audio.play();
+          allPlayPauseButtons[index].textContent = 'Pause';
+        } else {
+          audio.pause();
+          allPlayPauseButtons[index].textContent = 'Play';
+        }
+      } else {
+        audio.pause();
+        allPlayPauseButtons[audioIndex].textContent = 'Play';
+      }
+    });
+  }
+</script>
+
+</body>
+
+</html>
